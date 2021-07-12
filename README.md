@@ -20,6 +20,9 @@ realized it was time to put it in a more accessible place.
 
 Therefore, Github.
 
+This also allows me to copy the library to a new computer, quickly
+and easily.
+
 
 ## Intended audience
 
@@ -64,7 +67,7 @@ pointed out to me. Anybody who has been married for more than ten
 years knows what I'm talking about.
 
 To reword what I said earlier, only you can drive your car. Any errors
-in here are mine. All mine. So neener neener!
+in here are mine. All mine. I own them! 
 
 
 ## What's this about driving a car?

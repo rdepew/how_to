@@ -1,0 +1,30 @@
+Where's the MobaXterm home directory?
+=====================================
+
+That's a really good question. In Windows, it's in your Documents directory:
+
+    Documents > MobaXterm > home 
+
+While we're at it, MobaXterm's "root directory" is also in your Documents 
+directory:
+
+    Documents > MobaXterm > slash
+
+From the Windows command line, they are at:
+
+    C:\Users\rdepew\Documents\MobaXterm\home
+    C:\Users\rdepew\Documents\MobaXterm\slash
+
+Where's the C drive, from inside MobaXterm?
+===========================================
+
+MobaXterm is descended from Cygwin. So the old Cygwin location works:
+
+    /cygdrive/c
+
+... but MobaXterm has its own location, which works just as well:
+
+    /drives/c
+
+Both locations point to your C: drive. Naturally, you can substitute
+other drive letters for other drives.

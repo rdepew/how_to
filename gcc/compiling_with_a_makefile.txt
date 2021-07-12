@@ -1,0 +1,32 @@
+Compiling with a makefile
+=========================
+
+Suppose you have a file hello.c, and you want to compile it with gcc.
+
+If you were to do it from a command line, you would type:
+
+    gcc hello.c -o hello
+
+With a makefile, you simply type 
+
+    make hello
+
+and it does it for you. Here's how: Create a file called 'makefile' in 
+the same directory as your source code. Here's all it has to have inside:
+
+-------------- cut here - begin makefile contents ------
+hello: hello_world.c
+	gcc hello_world.c -o hello
+
+-------------- cut here - end makefile contents ------
+
+That's all there is to it. If your command shell program can't find gcc, 
+you'll need to replace 'gcc' with the full pathname to gcc.exe.
+
+Now you can make sure that the hello.exe executable always matches the
+hello.c source by typing 
+
+    make hello
+
+in the appropriate directory. If hello.c is newer than hello.exe, make 
+will update the .exe for you.

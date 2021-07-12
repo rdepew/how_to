@@ -1,0 +1,34 @@
+# Cygstart and open
+
+Cygwin (and MobaXterm) has this cool tool called 'cygstart'. You
+can start any Windows program at the Cygwin command prompt using
+'cygstart', like this:
+
+    $ cygstart notepad++
+
+But it's even better than that. The keyword `open` is aliased to
+`/bin/cygstart.exe`, so you can start a Windows program like this:
+
+    $ open notepad++
+
+Two cautions:
+1. You have to know the program name. Usually it's the name of the
+  .exe file.
+2. If the program's directory isn't in the Windows PATH, you'll 
+  need to 'cd' to the directory first, or else specify the full 
+  pathname in the `open` command.
+
+But it gets even better. 'open' can call the appropriate Windows
+program for files, URLS, and lots of other things. Here are some
+great examples:
+
+    $ open UserGuide.pdf
+    $ open gvim testprogram.py
+    $ open testprogram.py        # runs it in a new window
+    $ open "A Word file.docx"
+    $ open http://google.com
+    $ open /drives/c/Users/rdepew/Downloads
+    $ open ncpa.cpl
+
+See `open --help` for more options. Cygstart is a very powerful
+tool.

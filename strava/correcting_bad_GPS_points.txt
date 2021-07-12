@@ -1,0 +1,47 @@
+The post Correct and Edit bad GPS points in an Activity has a new comment.
+https://support.strava.com/hc/en-us/community/posts/208836527-Correct-and-Edit-bad-GPS-points-in-an-Activity
+
+
+Vianney Coppé
+May 28, 2020 06:32
+Hi all, during this quarantine I have spent some time developing a web-based interface for editing GPX files.
+
+You can find it at https://gpxstudio.github.io, you can use it to :
+
+- Import GPX files
+
+- Draw new routes
+
+- Edit traces
+
+   * Move, insert and delete points (less or more points depending on the zoom level)
+
+   * Cut from the start or the end
+
+   * Change the starting time of the activity
+
+   * Change the average speed of the activity
+
+- Combine and export multiple traces in the chosen order and respecting time precedence constraints (if any time data)
+
+- Preserve and automatically extend heart rate, cadence and temperature data
+
+I hope it will help some of you solve your problems, cheers!
+
+--------------------------------------------------------------------
+
+July 30, 2020, 19:08
+
+Cristian C.
+Hi Strava users.
+
+I found a way to solve this issue.
+First download the Garmin Base Camp software.
+
+Then download your zig zag course and open it with that programm.
+
+Edit point per point. It takes some time to find out how to move the points around. Save it and check the route in GoogleEarth. When sure, go back to Strava. Delete the activity. Upload the file. It calculates almost accurate your data.
+
+ 
+
+Cheers, Cristian from Bolivia

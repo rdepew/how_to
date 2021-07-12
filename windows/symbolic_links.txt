@@ -1,0 +1,5 @@
+Symbolic links in Windows
+
+Use the 'mklink' command:
+
+mklink /j "%UserProfile%\OneDrive\Example Folder" "F:\Example Folder"

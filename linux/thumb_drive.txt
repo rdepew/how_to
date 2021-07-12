@@ -1,0 +1,11 @@
+Using a thumb drive
+===================
+
+1. Find out what device (like /dev/sdc1) your thumb drive is using:
+     lsblk
+2. Mount the thumb drive. That takes two commands:
+    sudo mkdir /media/usb
+    sudo mnt /dev/sdb1 /media/usb
+3. Do all your stuff.
+4. Before removing the thumb drive, unmount it:
+    sudo umount /media/usb

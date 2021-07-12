@@ -1,0 +1,25 @@
+Using pandoc to turn Markdown into HTML
+=======================================
+
+Note that pandoc is much more versatile than this simple task.
+It can convert between multiple file formats, not just Markdown
+and HTML. See <https://pandoc.org> for more details.
+
+1. Create the .md file.
+
+2. Open a Windows PowerShell. Navigate to the directory
+  containing the .md file.
+
+3. In PowerShell, execute the command
+```
+pandoc -s -o <filename>.html <filename>.md
+```
+  * The -s tells pandoc to create a full standalone webpage, 
+    not just an HTML fragment (that is, just the text in the .md
+    file).
+  * The -o argument specifies the output filename.
+  * The final argument is the input filename.
+
+4. In Firefox or Google Chrome, press Ctl-O, navigate to the
+  directory containing the .html file, and select the .html file.
+

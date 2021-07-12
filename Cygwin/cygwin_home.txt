@@ -1,0 +1,9 @@
+# Cygwin home
+
+The Cygwin 'home' directory is 
+c:\Users\Ray\Documents\MobaXterm\home
+
+The way to find it is to open a Cygwin window and issue the command
+```
+cygpath -w ~
+```

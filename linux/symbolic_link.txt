@@ -1,0 +1,14 @@
+Creating a symbolic link
+========================
+
+It's always like this:
+
+    ln -s /full/path/to/target shortcut
+
+For example:
+
+    cd
+    ln -s /drives/h/redepew/how_to how
+
+... creates a link called '/home/rdepew/how'. If I type 'cd ~/how', it will
+take me to the directory /drives/h/rdepew/how_to.

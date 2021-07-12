@@ -1,0 +1,89 @@
+SD cards and Linux
+==================
+
+It's a lot easier to format and partition SD cards in Windows, but
+sometimes you get an SD card from someone and it has multiple partitions
+and some of the partitions are empty or unused.
+
+Or sometimes your network connections in Windows are such that Disk
+Management and diskpart and chkdsk don't work. 
+
+Here are some Linux commands that will help.
+
+Seeing all of the disks you have
+--------------------------------
+
+Disks show up as /dev/sda, /dev/sdb, and so on. Partitions on disks show up
+as /dev/sda1, /dev/sda2, and so on.
+
+Here are some useful commands for seeing the disks (including SD cards) on
+your system:
+
+    df (not terribly useful for seeing or recovering bad SD cards)
+    sudo fdisk -l
+    lsblk
+
+Using partition editor tools
+----------------------------
+
+The two most common tools are 'parted' and the graphical version,
+'gPartEd'. (I may have the CamelCase wrong on that one.)
+
+Here are some useful tutorials on 'parted':
+https://www.cio.com/article/3176034/how-to-format-an-sd-card-in-linux.html
+
+Here's the GNU Parted manual
+https://www.gnu.org/software/parted/manual/parted.html#Using-Parted-1
+
+Here's what I had to do to clean up an SD card. It wasn't painful, once I
+got it all figured out.
+
+First, start parted by typing 'parted' at the command line. It gives you a
+new command line with a '(parted)' prompt.
+
+Select the right device. You have to use df, fdisk -l, or lsblk to find the
+devices. DON'T SELECT THE WRONG ONE!
+
+    select /dev/sdb
+
+Print the card and partition info so you know what you need to do
+
+    print
+
+Now remove all of the partitions. I did them in reverse order, but I don't
+think you have to.
+
+    rm 5
+    rm 4
+    rm 3 
+    rm 2
+    rm 1
+
+Create one huge partition for the entire card.
+
+    mkpart primary fat32 0 100%
+
+Verify that it worked, then exit.
+
+    print
+    quit
+
+
+Mounting the SD card
+--------------------
+
+For some reason, this part has always made me nervous. Basically, it's
+two steps. In this example, we're going to mount the partition located at
+/dev/sdc1 and call it /mnt/data. Then we can use /mnt/data just like any
+other Linux directory.
+
+    mkdir /mnt/data
+    mount /dev/sdc1 /mnt/data
+
+You can list the contents of /dev/sdc1:
+
+    ls /mnt/data
+
+To unmount (eject) the SD card:
+
+    umount /mnt/data (that's 'umount', not 'unmount')

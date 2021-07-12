@@ -1,0 +1,13 @@
+Using ImageMagick to convert between graphics formats
+=====================================================
+
+Like pandoc, ImageMagick is a command-line-only tool.
+(Actually, that's no longer true. But let's pretend it is.)
+
+On Ubuntu, ImageMagick is invoked using the 'convert' command.
+On some other systems, it is invoked using the 'magick' command.
+
+Try 'convert --help | less' to see how to use it, or go to the
+website, <https://www.imagemagick.org/script/index.php>
+or, more specifically,
+<https://www.imagemagick.org/script/command-line-processing.php>.

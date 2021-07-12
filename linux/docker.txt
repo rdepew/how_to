@@ -1,0 +1,11 @@
+# Docker commands
+
+docker container ls
+-or-
+docker ps
+lists all the Docker containers running on the device
+
+docker image ls
+lists all the Docker images installed on the device
+
+

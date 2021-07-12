@@ -1,0 +1,39 @@
+# VIM tricks
+
+# Editing multiple files
+
+1. The simplest way to edit multiple files is with the command 
+  `vi file1 file2 ...`
+  Then use the Vi commands :n and :p to switch between them.
+  :n is "go to next file". :p is "go to previous file".
+
+2. To edit multiple files with tabs at the top of the window
+  (my personal favorite), use the `-p` option:
+  `vi -p file1 file2 ...`
+  Then use the key combinations `gt` and `gT` to switch 
+  forward and backward through the tabs. 
+
+3. To edit multiple files side-by-side in a big window, use 
+  the '-O' option (that's a capital oh, not a zero):
+  `vi -O file1 file2 ...`
+  This works best if you have a very wide terminal window.
+
+  To edit multiple files arranged vertically in a big window,
+  use the '-o' option (that's a small oh):
+  `vi -o file1 file2 ...`
+  This works best if you have a very tall terminal window.
+
+  Then use the key combinations `Ctl-W w` `Ctl-W j` and 
+  `Ctl-W k` to switch between files.
+
+  To open a new file beside the others:
+  :new foofoofoo
+
+  To show only the file you're currently in:
+  :only
+
+  To exit from any one file and close its window:
+  :q
+
+  To exit from all files at once:
+  :qa

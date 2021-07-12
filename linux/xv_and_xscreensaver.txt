@@ -1,0 +1,39 @@
+XV and XScreenSaver
+===================
+rrd
+20190612
+
+First, XScreenSaver is the old X11-based screensaver program. Still superior to
+a lot of alternatives. You can install it using
+```
+sudo apt install xscreensaver
+```
+
+Second, XV is an old, old, OLD image viewer written by John Bradley and
+abandoned (not maliciously) by him in 1994. The online community has continued
+to update it. YOu can obtain it from https://snapcraft.io/xv . I used to use
+this at HP, back when I first learned Unix. It's a great little program.
+
+Actually, it took me two -- no, four -- steps to install xv on a Raspberry Pi 3.
+```
+sudo apt update
+sudo apt install snapd
+sudo reboot
+sudo snap install core
+sudo snap install xv --edge
+```
+
+And for Raspberry Pi, I had to modify that last command one more time:
+```
+sudo snap install xv --edge --jailmode
+```
+
+UPDATE 20200819: Forget XV. Okay, it's still good, but ImageMagick is better.
+Install ImageMagick instead, and then use the 'display' command instead of
+'xv'.
+```
+sudo apt install imagemagick
+display --help
+display (with no arguments at all)
+display show_this_file.jpg
+```

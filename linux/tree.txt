@@ -1,0 +1,10 @@
+Using 'tree'
+===========
+
+tree <dirname> Displays the tree for <dirname>. Blank is currrent working dir.
+
+-d             directories only
+--dirsfirst    list directories first
+-a             like 'ls -a'
+-l             follow symbolic links as if they were subdirs
+-L n           only go n levels deep

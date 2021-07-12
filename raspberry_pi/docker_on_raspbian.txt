@@ -1,0 +1,12 @@
+# Installing Docker on Raspbian
+
+You have to use Raspbian Stretch or newer.
+
+Follow the instructions at https://withblue.ink/2017/12/31/yes-you-can-run-docker-on-raspbian.html. You will run into a couple of problems at the very end.
+
+To avoid tehse problems, run these commands *BEFORE* the `pip install docker-compose` step.
+```
+pip install setuptools
+pip install wheel
+apt (or sudo apt) install python-dev libffi-dev
+```

@@ -1,0 +1,62 @@
+How to delete partitions on an SD card
+======================================
+
+Sometimes when you borrow an SD card, you find that it already has
+partitions on it that limit the amount of space you can use. Here's 
+how to reclaim that missing space.
+
+
+Method 1: The Windows Disk Management tool
+------------------------------------------
+
+Open the Disk Managment tool by typing in the Run field: diskmgmt.msc. (Or
+you can right-click on the Start icon and choose Disk Management from the
+menu.)
+
+Right click the partition you want to delete and then click Delete Volume.
+
+But sometimes the Delete Volume option is greyed out. In that case, try
+something else. Bummer.
+
+Method 2: DiskPart
+-------------------
+
+Open the Disk Partitioning tool by typing in the Run field: diskpart
+
+When it asks if you want to allow it to make changes, click Yes.
+
+At the diskpart prompt, type 'list disk'.
+
+Type 'select disk n', where n is the disk where you plan to delete the
+partition.
+
+Type 'list partition'.
+
+Type 'select partition n', where n is the partition you want to delete.
+
+Type 'delete partition'.
+
+Done.
+
+Method2a: DiskPart again
+------------------------
+
+After 'select disk n', type 'clean'. This should clean everything off the
+SD card. DANGER! It really will. Erases EVERTYHING.
+
+Then type 'create partition primary'. This creates a partition on your SD
+card. You have to do this step, or the entire card will be "unallocated".
+
+
+Method 3: SD Card Formatter
+---------------------------
+
+Download and install the SD Card Organization's official SD card formatter
+tool from
+https://www.sdcard.org/downloads/formatter/eula_windows/index.html .
+
+Method 4: Linux! This one always works
+--------------------------------------
+
+Use the Linux 'parted' tool. See the file how_to/linux/sd_cards_and_linux.txt .
+

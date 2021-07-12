@@ -1,0 +1,15 @@
+Compiling with gcc
+==================
+To compile a simple C program, creating an executable called a.out (or a.exe) :
+
+    gcc hello_world.c
+
+To compile a simple C program, creating an object or .o file:
+
+    gcc -c hello_world.c
+
+
+To compile a simple C program, creating an executable called hello.exe:
+
+    gcc hello_world.c -o hello
+

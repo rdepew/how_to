@@ -1,0 +1,23 @@
+Editing HTML with VIM
+=====================
+
+This also works for XML.
+
+To select everything between two tags, like these div tags:
+
+  <div class="container">
+    stuff
+    more stuff
+    yet more stuff
+    all kinds of stuff
+  </div>
+
+Type v a t (visual, all, tags) to highlight everything including the tags.
+or
+Type v i t (visual, inside, tags) to highlight everything between the tags.
+
+With everything highlighted, type o repeatedly to toggle between the tags.
+(Normally, 'o' does a 'add a line underneath the cursor' action.)
+
+Type c i t (change, inside, tags) to change everything between the tags.
+

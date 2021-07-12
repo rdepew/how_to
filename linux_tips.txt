@@ -1,0 +1,8 @@
+linux tips
+----------
+
+To see how much power your USB devices are pulling (and other USB information):
+
+     lsusb -v
+
+(You may need to 'sudo' that commmand.)

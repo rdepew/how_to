@@ -1,0 +1,175 @@
+Resizing an Oracle VirtualBox virtual machine
+=============================================
+
+This procedure makes the following important assumptions:
+
+1. Your host computer, the one running VirtualBox, is running  Windows 10.
+2. Your VirtualBox version is 6.1 or newer.
+3. Your virtual machine is a Linux machine.
+
+Preliminaries
+-------------
+
+Before you can resize the VM, you need to clone the original VM. 
+
+And before you can clone it, you should update PATH environmental variable
+on your Windows host.
+
+And before you can update the PATH, you need to verify the path to VirtualBox.
+
+Verify the path
+---------------
+
+Open a File Manager window.
+
+Double-click "Local Disk (C:)".
+
+Double-click "Program Files". Look for a directory called "Oracle". If it's
+not there, back up one level and double-click "Program Files (x86)" instead.
+
+Double-click "Oracle". Look for a directory called "VirtualBox".
+
+Double-click "VirtualBox". Look for a file called "VBoxManage.exe". If you 
+can find that file, then you're in the right place.
+
+At the top of the File Manager window is a box that says "Program Files > 
+Oracle > VirtualBox", or something similar. 
+
+Single-click the box, and it changes to "C:\Program Files\Oracle\VirtualBox".
+Right-click and select Copy.
+
+Update PATH
+------------
+
+Click the Start icon, the Settings icon (the gear) to open the 
+"Windows Settings" window. In the "Find a setting" box, type PATH.
+
+Choose "Edit the system environment variables".
+
+In the "System Properties" window, click "Environment Variables...".
+
+In the "User Variables for whatsyourname" list, click Path, and then click
+"Edit...".
+
+The "Edit environment variable" window opens up. Click "New".
+
+On the line below the last entry in the window, right-click and select
+Paste. This will add the path to VirtualBox, from the previous step,
+to the bottom of the list.
+
+Click OK to close the "Edit environment variable" window.
+
+Click OK to close the "Environment Variables" window.
+
+Click OK to close the "System Properties" window.
+
+Close the "Windows Settings" window.
+
+
+Clone the VM
+------------
+
+Click the Start icon or the "Type here to search" window in the menu bar.
+
+Type "command" but don't hit Enter. Right click on either of the "Command
+Prompt App" offerings, and select "Run as administrator." This opens a
+"Adminstrator: Command Prompt" window.
+
+Let's assume for this example that your username is "mike" and your VM
+machine is "machine1".
+
+At the C:\> prompt, type the command
+    cd "\Users\mike\VirtualBox VMs"
+and press Enter. This will put you in the "VirtualBox VMs" directory and the 
+prompt will change to "C:\Users\mike\VirtualBox VMs>" .
+
+Type the command
+    dir
+and press Enter to confirm that there's a directory called "machine1".
+
+Type the commands
+    cd machine1
+    dir
+pressing Enter after each command, to confirm that you're in the "machine1" 
+directory and that, among the other files in the directory, is a file called
+"machine1.vdi".
+
+Type the command
+    path
+and press Enter, to confirm that "C:\Program Files\Oracle\VirtualBox" is 
+in the PATH variable.
+
+Now you're FINALLY ready to clone the VM. Carefully type the command
+    VBoxManage clonemedium disk machine1.vdi machine2.vdi
+and press Enter. Watch the command output to verify that the VDI file is
+cloned.
+
+"Cloned" is more than "copied". You have to clone it.
+
+Now you have a new VM image, called "machine2.vdi". This is the one you're 
+going to resize. Don't touch "machine1.vdi"; leave it there as a backup.
+
+Resize the VM (the easy way, using the VirtualBox tool)
+-------------------------------------------------------
+
+Open the Oracle VM VirtualBox app. In the File menu at the top, click
+Virtual Media Manager. You should see both machine1.vdi and machine2.vdi
+listed in the Virtual Media Manager window.
+
+Don't touch machine1.vdi. Remember, it's now your backup.
+
+Click machine2.vdi. Then, in the bottom of the window, adjust the size. You
+can make the VM bigger, but you can't make it smaller.
+
+Click Apply. That's it! Your new VM image is now resized. Don't open it
+yet -- but if you tried, you would be disappointed. 
+
+First, you have to tell your VM to use the new VM image. 
+
+Second, you have to tell your VM's operating system to use the additional space
+you just gave it.
+
+Use the new cloned VM image
+---------------------------
+
+Close the Virtual Media Manager window. In the Oracle VM VirtualBox Manager
+main window, single-click on the "machine1" virtual machine, and select
+Settings.
+
+In the Machine1 - Settings window, on the left-side menu, select Storage.
+
+You will see two VDI files listed under Storage devices:
+    machine1.vdi (attached)
+    machine2.vdi (not attached)
+
+First, attach machine2.vdi by right-clicking it and selecting "attach" or
+"Add Attachment", whatever it says.
+
+Second, un-attach machine1.vdi by right-clicking it and selecting "detach"
+or "unattach" or "Remove Attachment", whatever it says.
+
+Click OK to close the Settings window.
+
+Now double-click on the "machine1" virtual machine to start it up.
+
+Adjusting the partition size
+----------------------------
+
+After you've logged into your virtual machine, you need to install and run
+a partition manager. An easy Linux one is a graphics-based one called 
+Gparted.
+
+Do whatever you need to do in your Linux system to install and open GParted.
+
+The partition manager will show you the main hard disk. In Linux, it's
+probably called /dev/sda1. The partition manager will show you that the
+disk capacity is some big number, but that the partition is a much smaller
+number. 
+
+Select the partion, right-click, and choose Resize/Move. Then adjust the
+partition so that it uses all of the new space you just gave it.
+
+Click Ok, Accept, Apply, whatever it takes to set the new partition size and
+close Gparted.
+
+You're done! 

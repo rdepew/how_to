@@ -1,0 +1,15 @@
+If you don't want to have to type your user password every time you 
+use a 'sudo' command, then do this:
+
+    sudo usermod -aG sudo <username>
+
+Sign out and then sign back in for changes to take effect.
+
+Verify that it worked by doing this:
+
+    sudo echo test
+
+If the system does NOT prompt you for a password, and DOES return
+'test', then your user is configured correctly.
+
+(stolen from https://docs.aws.amazon.com/greengrass/latest/developerguide/device-config-setup.html)

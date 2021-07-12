@@ -1,0 +1,11 @@
+Sharing files between VM and regular PC
+=======================================
+
+Once you get the share setup on the VM, you can find it in the /media
+directory.
+
+For example, the shared directory on the host PC FW-20020 is 
+   c:\Users\rdepew\Documents\share
+and on the VM bierstadt-dev2 it's
+   /media/sf_share.
+

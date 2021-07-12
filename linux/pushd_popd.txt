@@ -1,0 +1,33 @@
+pushd and popd
+==============
+
+Linux (and Windows PowerShell) use a directory stack. It's always there,
+but most users ignore it, and just use 'cd' instead. I mean, 'cd' is
+powerful and versatile, too. But this is about the directory stack.
+
+Three commands:
+* pushd
+* popd
+* dirs
+
+pushd
+-----
+pushd [dir] changes to 'dir', puts 'dir' on the top of the directory
+stack, and prints the directory stack for you.
+
+popd
+----
+popd deletes the entry on the top of the directory stack, changes to the
+previous directory on the stack, and prints the directory stack for you.
+
+dirs
+----
+dirs prints the directory stack for you.
+
+pushd +n
+--------
+It looks like 'pushd +1' is equivalent to 'cd -'. 
+
+popd +n
+-------
+I haven't experimented with this yet.

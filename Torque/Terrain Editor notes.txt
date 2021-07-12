@@ -1,0 +1,7 @@
+Terrain Editor notes
+--------------------
+Heightmap
+The other map
+- if it's black and white, it defines where two textures go.
+- if it's RGBA, it defines where four textures go.  Each color gets one texture.
+Diffuse - this is the base texture.

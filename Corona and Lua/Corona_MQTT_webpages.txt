@@ -1,0 +1,29 @@
+corona mqtt at DuckDuckGo
+https://duckduckgo.com/?q=corona+mqtt&t=ffab&atb=v145-1&ia=videos
+
+library or API for MQTT - Network - Corona Labs Forums
+https://forums.coronalabs.com/topic/74398-library-or-api-for-mqtt/
+
+GitHub - geekscape/mqtt_lua: MQTT Client library for the Lua language
+https://github.com/geekscape/mqtt_lua
+
+GitHub - jlooper/RPI_CoronaSDK: Connecting Corona app to Raspberry Pi via MQTT
+https://github.com/jlooper/RPI_CoronaSDK
+
+This next one is promising, because there's a screenshot of a Lua file with 
+the text "mqtt.mqtt_connect", possibly from one of the above libraries.
+EclipseCon 2012: Koneki, Paho, MQTT, CoronaSDK - YouTube
+https://www.youtube.com/watch?v=XOlopalLKeU
+
+Jen from Ladeez First Media actually has a Corona/Pi/MQTT connection going.
+Make an LED light blink on your Raspberry Pi from your Corona SDK app – Ladeez First Media
+http://www.ladeezfirstmedia.com/2014/04/20/make-an-led-light-blink-on-your-raspberry-pi-from-your-corona-sdk-app/
+
+Tutorial – Up and running with Raspberry Pi and Lua – Ladeez First Media
+http://www.ladeezfirstmedia.com/2014/04/14/tutorial-up-and-running-with-raspberry-pi-and-lua/
+
+MQTT + Mosquitto Server + Corona SDK - YouTube
+https://www.youtube.com/watch?v=AymciJejQh0
+
+One of these pages mentioned a free cloud-based MQTT broker? 
+It was at iot.eclipse.org. It may not exist anymore.

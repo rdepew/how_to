@@ -1,0 +1,22 @@
+Counting files in a directory
+=============================
+
+This includes subdirectories, of course.
+
+Tree
+----
+
+Just run the 'tree' command. The bottom line (literally) tells you how many directories and how many files it found.
+
+
+Ls
+--
+
+The command
+```
+ls -laR | egrep -c'^-'
+```
+... gives you an integer, the number of files it found. The 'a' ("all") option includes hidden files in the count.
+The 'R' ("recursive") option includes all subdirectories in the directory tree.
+
+To see how it works, try the 'ls -laR' command without piping it to 'egrep'.

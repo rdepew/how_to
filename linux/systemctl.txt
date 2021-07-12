@@ -1,0 +1,134 @@
+Using systemctl to run both services (daemons) and timers
+=========================================================
+
+Services
+========
+
+Let's suppose you have a program called 'dance.sh' in a directory called
+/home/rdepew/dance.
+
+1. First, create a *unit file* in /etc/systemd/system, called 'dance.service'.
+  You'll have to do this as sudo.
+```
+sudo vi /etc/systemd/system/dance.service
+```
+
+  The file contents:
+```
+[Unit]
+Description=My dance service
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/rdepew/dance/dance.sh
+
+[Install]
+WantedBy=multi-user.target
+```
+
+  You can read more about unit files online. This simple unit file is enough
+  to get you going.
+
+2. Set permissions on the file:
+```
+sudo chmod 644 /etc/systemd/system/dance.service
+```
+
+3. Start and enable the service.
+```
+sudo systemctl start dance
+sudo systemctl enable dance
+```
+
+'start' just runs the dance service. If you kill the process, it stops.
+'enable' restarts it on reboot, or whenever it is killed.
+
+4. Other commands:
+
+```
+sudo systemctl status dance
+sudo systemctl stop dance
+```
+
+'status' outputs the status of the service.
+'stop' is the clean way to kill it. 'kill -9 <the-process-id>' works too, 
+but isn't as clean as 'stop'.
+
+Timers
+======
+
+Let's suppose that you want your 'dance.sh' program to run every day at 
+3:00 p.m. (That's UTC, so it will be 3:00 p.m. in London, England.)
+
+1. Create the 'dance.service' unit file as described above, but don't
+  start or enable it.
+
+2. Now create a unit file called 'dance.timer' in /etc/systemd/system.
+```
+sudo vi /etc/systemd/system/dance.timer
+```
+  The file contents:
+```
+[Unit]
+Description=Dance in the afternoon
+
+[Timer]
+OnCalendar=*-*-* 15:00:00
+Unit=dance.service
+
+[Install]
+WantedBy=multi-user.target
+```
+
+2. Set permissions on the file:
+```
+sudo chmod 644 /etc/systemd/system/dance.timer
+```
+
+3. Start and enable the timer.
+```
+sudo systemctl start dance.timer
+sudo systemctl enable dance.timer
+```
+
+'start' starts the dance timer for the first time.
+'enable' activates it at boot.
+
+4. Reloading the daemon
+
+If you change the timer frequency, after modifying the OnCalendar value,
+don't forget to type
+```
+sudo systemctl daemon-reload
+```
+
+5. Other commands:
+
+```
+sudo systemctl status dance.timer
+sudo systemctl stop dance.timer
+sudo systemctl is-enabled dance.timer
+sudo systemctl is-active dance.timer
+```
+
+  I think that 'status' is more useful than 'is-enabled' or 'is-active'.
+
+
+Other systemctl commands
+========================
+```
+sudo systemctl list-units
+sudo systemctl list-unit-files
+sudo systemctl list-timers
+sudo systemctl list-timers --all
+sudo systemctl list-sockets
+sudo systemctl list-jobs
+```
+
+References
+==========
+For the service: https://www.linode.com/docs/quick-answers/linux/start-service-at-boot/
+For the timer: https://www.certdepot.net/rhel7-use-systemd-timers/
+(Don't click on the "Jason the Graham" link at the bottom of the CertDepot 
+page. It tries to sneak some other SW onto your system. It may be malware, 
+or spyware, or innocuous-but-useless bloatware. You don't need it.)

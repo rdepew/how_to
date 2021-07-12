@@ -1,0 +1,23 @@
+Connecting to a network drive
+-----------------------------
+rrd
+4 Dec 2017
+
+I can't believe I didnt' figure this out before.
+
+You know how the Windows C:\ drive maps to /cygwin/c? Well, where do network 
+drives map to?
+
+I found the answer on 
+https://superuser.com/questions/102233/how-to-go-to-remote-directory-in-cygwin
+
+The Windows network location
+  \\files.somewhere.com\smbshare\xyzzy
+maps to the Cygwin location
+  //files.somewhere.com/smbshare/xyzzy. 
+
+Everything's the same, except that you use forward slashes instead of
+backslashes. Easy peasy. Like I said, how come I didn't figure this out
+before?
+
+Duh.

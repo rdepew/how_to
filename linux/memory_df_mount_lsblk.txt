@@ -1,0 +1,5 @@
+Use 'df -h' to see how much memory each partition is taking.
+
+Use 'mount' to see all of the mounted partitions. 'mount | sort | less' might be more useful.
+
+Use 'lsblk' to see all of the partitions.

@@ -1,0 +1,41 @@
+How to create and copy SSH keys
+===============================
+
+You set up computers for SSH'ing by (1) creating a public key and a private
+key, and (2) by copying the public key to the other computer. Best to explain
+by quoting from
+https://docs.aws.amazon.com/greengrass/latest/developerguide/device-tester-for-greengrass-ug.html:
+
+Adding Authorized SSH Keys to Your Device Under Test
+----------------------------------------------------
+
+AWS IoT Device Tester must use your SSH private key to sign in to your device
+under test. To authorize your SSH private key to sign in to your device under
+test, use the ssh-copy-id command from your host computer. This command adds
+your public key into the ~/.ssh/authorized_keys file on your device under test.
+For example:
+
+    $ ssh-copy-id<remote-ssh-user>@<remote-device-ip>
+
+Where remote-ssh-user is the user name used to sign in to your device under
+test and remote-device-ip is the IP address of the device under test to run
+tests against. For example:
+
+    ssh-copy-id pi@192.168.1.5
+
+When prompted, enter the password for the user name you specified in the
+ssh-copy-id command.
+
+ssh-copy-id assumes the public key is named id_rsa.pub and is stored the
+default location (on macOS and Linux, ~/.ssh/ and on Windows,
+C:\Users\<user-name>\.ssh). If you gave the public key a different name or
+stored it in a different location, you must specify the fully qualified path to
+your SSH public key using the -i option to ssh-copy-id (for example,
+ssh-copy-id -i ~/my/path/myKey.pub). For more information about creating SSH
+keys and copying public keys, see SSH-COPY-ID.
+
+For more information
+--------------------
+
+For more information about ssh-keygen, see this authoritative webpage:
+https://www.ssh.com/ssh/keygen/

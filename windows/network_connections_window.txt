@@ -1,0 +1,20 @@
+Opening the Network Connections window in Windows 10
+====================================================
+
+This is something that Windows 10 tries to hide. It's 
+extremely useful and important at FreeWave.
+
+Here's a webpage that tells, not just how to 
+open the Network Connections window, but how to save
+a shortcut to the Network Connections window on your
+desktop.
+
+https://winaero.com/blog/network-connections-shortcut-windows-10/
+
+And in MobaXterm
+================
+
+It's easier in MobaXterm. Just type this at the prompt:
+
+    open ncpa.cpl
+

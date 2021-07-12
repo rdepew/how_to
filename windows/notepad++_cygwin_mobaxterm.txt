@@ -1,0 +1,35 @@
+How to start Notepad++ from Cygwin (or MobaXterm) command line
+==============================================================
+
+(From https://superuser.com/questions/607379/how-do-i-start-notepad-from-cmd)
+
+Suppose you're using Cygwin and you want to run Notepad++.
+
+Regular Notepad is easy: just type 'notepad'.
+
+Notepad++ isn't that easy, though. But there's a way-cool workaround.
+
+You know how you can run any program by entering the program name in the 
+Windows "Type here to search" field and hitting Enter?
+
+Well, from the *Windows* command line, you can do the same thing by typing
+'start <program_name>'.
+
+Cygwin has its own version of 'start', called 'cygstart'. So in Cygwin, type
+'cygstart <program_name>'.
+
+And MobaXterm includes Cygwin, so 'cygstart' works in MobaXterm as well.
+Exclamation point!
+
+SO....
+
+If you want to run notepad++ from Cygwin or MobaXterm:
+'cygstart notepad++'
+
+You can also open a file in Notepad++ by typing:
+'cygstart nodepad++ <filename>'
+
+LATE-BREAKING NEWS:
+'cygstart' is aliased to 'open'. So it's easier to remember:
+
+'open notepad++ <filename>'

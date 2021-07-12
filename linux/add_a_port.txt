@@ -1,0 +1,9 @@
+To add a port to a Linux box:
+
+sudo iptables -A INPUT -p tcp --dport <Port_number_goes_here> -j ACCEPT
+
+EXAMPLE, Port 502 (modbus):
+
+sudo iptables -A INPUT -p tcp --dport 502 -j ACCEPT
+
+NOTE: that's a double-dash before "dport".

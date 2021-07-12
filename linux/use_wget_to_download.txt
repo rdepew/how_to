@@ -1,0 +1,11 @@
+Use 'wget' to download stuff from the Web
+=========================================
+Use the ‘wget’ function to download stuff from the web without a browser.
+
+It supports HTTP, HTTPS, and FTP. If downloading webpages, it can do everything
+you need to create a local version of the webpage, including links and images.
+
+‘wget’ is a fire-and-forget function, so that you can launch it and then log
+out. As long as you don’t shut down or reboot, it will run to completion
+without you.
+

@@ -1,0 +1,8 @@
+# Getting to the Command.com prompt in MobaXterm
+
+Just type `cmd` at the prompt. It will start a command.com session 
+right there in MobaXterm.
+
+If you need to run as administrator, type `sudo cmd`. It will ask
+for permission, and then open command.com in a separate window.
+

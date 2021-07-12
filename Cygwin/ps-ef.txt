@@ -1,0 +1,13 @@
+Using ps -ef
+------------
+To see all Cygwin processes running:
+     ps -ef
+To see all Windows processes running:
+     ps -W
+(That last one is cool!)
+
+Looking for something like the Windows TaskManager?
+Try one of these:
+     tasklist (Windows command - try tasklist /? )
+     top (cygwin's is a beautiful color version)
+     htop (a new and improved version - not on Cygwin yet)

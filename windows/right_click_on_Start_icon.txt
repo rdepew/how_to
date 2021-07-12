@@ -1,0 +1,26 @@
+Right-clicking on the Start icon
+================================
+
+Wow. Why didn't I discover this earlier? A lot of the Windows sysadmin
+tools, things that are second nature in Linux, show up this menu. There
+are other ways to get to these tools, but this is the easiest way yet.
+
+Try it. Right-click on on the Windows 10 Start icon. Here's what you get:
+
+Apps and Features - the old "Add and Remove Programs" tool.
+Mobility Center - useful tools for moving your laptop PC around.
+Power Options - eh
+Event viewer - eh 
+System - the summary / title page that WinXP used to display so nicely.
+Device Manager
+Network Connections - you need this to fix Network Sharing.
+Disk Management - disk partitioning, etc. Doesn't work very well on my PC.
+Computer Management - combines some of the other tools
+Windows PowerShell
+Task Manager
+Settings
+File Explorer
+Search
+Run
+Shut down or sign out
+Desktop (same as Win-M or Win-D)

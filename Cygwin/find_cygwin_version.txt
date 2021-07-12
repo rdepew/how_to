@@ -1,0 +1,33 @@
+How to find the Cygwin version number
+-------------------------------------
+rrd 20130722
+Extracted from http://cygwin.com/ml/cygwin-xfree/2004-02/msg00121.html
+
+On Wed, 18 Feb 2004, Jeffrey J. Gray wrote:
+
+> [snip]
+> ... and I'm running .... hm, not sure how to check my Cygwin version,
+> it's probably ~4 months old .... on WinXP.
+
+Jeff,
+
+Just like on any Unix system, "uname -srv" will return the kernel (in
+Cygwin's case, cygwin1.dll) version.  On Cygwin, you can also use
+"cygcheck -srv" to get detailed information about your system (essential
+for diagnosing Cygwin problems, see <http://cygwin.com/problems.html>), or
+"cygcheck -cd" to just get the versions of all installed packages (or omit
+the "-d" flag to also check them for integrity).  If you post the output
+of either "cygcheck -srv" or "cygcheck -cd", please *attach* it to your
+message, rather than including it inline.
+	Igor
+P.S. I was surprised that this isn't in the FAQ.  David, could you please
+add this, under the heading "What version of Cygwin do I have?" or
+something?  Oh, and BTW, there's a "What version is this, anyway?" entry
+that has nothing to do with this question, and is pretty confusing.
+-- 
+				http://cs.nyu.edu/~pechtcha/
+      |\      _,,,---,,_		pechtcha@cs.nyu.edu
+ZZZzz /,`.-'`'    -.  ;-;;,_		igor@watson.ibm.com
+     |,4-  ) )-,_. ,\ (  `'-'		Igor Pechtchanski, Ph.D.
+    '---''(_/--'  `-'\_) fL	a.k.a JaguaR-R-R-r-r-r-.-.-.  Meow!
+

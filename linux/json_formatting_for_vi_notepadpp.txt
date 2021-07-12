@@ -1,0 +1,56 @@
+# Reading formatted JSON in Notepad++ or Vim
+
+## Notepad++
+
+JSON files are usually just one long line with no newlines or indents. I
+manually formatted them last week. That's too much work.
+
+Notepad++ has a Plugin Manager. Using the Plugin Manager, I added JSTool and
+JSON Viewer plugins to Notepad++ at home. Having both is redundant. Just JSTool
+would have been enough. But yeah: add them at work.
+
+
+## Vim
+
+From inside VIM, you can call on a Python plugin to do the same thing for you:
+```
+:%!python -m json.tool
+```
+
+I got the VIM tip from https://coderwall.com/p/faceag/format-json-in-vim.  He
+referenced
+https://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/.
+And *he* referenced
+http://visibletrap.blogspot.com/2010/05/vim-how-to-format-and-syntax-highlight.html,
+which also tells how to turn it into one of Steve's "leader" commands.  And
+*he* referenced a page that is no longer found, dating from 2009. Nothing is
+new, is it?
+
+"Leader" is explained in
+https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file
+. It defaults to backslash. This means I need to brush up on .vimrc files.
+
+
+## Standalone (and also VIM method 2)
+
+Install the tool 'jq'. 
+```
+$ sudo apt install jq
+```
+
+Use the package manager for Cygwin or MobaXterm.
+
+From the command line, execute this command.
+```
+jq . <filename>.json
+```
+
+Output goes to stdout. The dot is important. Don't neglect it.
+
+From inside VIM:
+```
+:%!jq .
+```
+
+Remember, the dot is important. Don't neglect it.
+

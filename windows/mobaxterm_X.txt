@@ -1,0 +1,40 @@
+# The X server in MobaXterm
+
+
+## On remote systems
+
+The X server in MobaXterm lets you run graphics-based programs on
+remote systems in X windows on your local PC. Just ssh to the
+remote system and execute the command, like 'xclock' (everybody's
+favorite X demo)or 'gitk' or 'wireshark' or even 'firefox'.
+
+
+## On your local system
+
+MobaXterm / Cygwin has a limited set of graphical programs that you
+can install locally. They're listed at
+
+    https://mobaxterm.mobatek.net/plugins.html 
+
+and you install them by typing
+```
+apt-get install <the_program_name>
+```
+
+The first time you install a graphical program, it will take a
+while to install all of the X dependencies. I mean, like, a
+half-hour. And you will have to do some fiddlign with the
+configurations to get the Cygwin/MobaXterm version to look like the
+native Windows version.
+
+
+## Xclock and others that aren't listed 
+
+If you don't see a program listed at that webpage, try running and
+installing it anyway. For example, you can try running `xclock`.
+MobaXterm will tell you that it's not installed and suggest you try
+installing it. Install it using
+```
+apt-get install xclock
+```
+... and then try running it again. It will work.

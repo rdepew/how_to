@@ -1,0 +1,121 @@
+How to use ctags with Vim and Python
+====================================
+
+Actually, I think this works with any programming language. But I remember
+that at Sporian, we had it working for C and C++, but not for Python. So
+I hope that this works.
+
+Copied wholesale from
+http://www.held.org.il/blog/2011/02/configuring-ctags-for-python-and-vim/ .
+
+After the held.org.il article are some hints I gleaned from
+https://linuxhint.com/vim_ctags/ .
+
+Also, be sure to type `:help tags` inside Vim, and read the extensive
+documentation.
+
+----------------- cut here -----------------------------
+
+Configuring ctags for Python and Vim
+10 Replies	
+
+Exuberant ctags is a cool, language-agnostic tool for creating tag files for
+your source code. Nice editors such as Vim, could use these tag files to
+implement the much needed 'jump to definition' feature.
+
+Ctags is awesome, it supports Python, and is supported by Vim. It seems that
+the world is perfect and there's no reason to write a post about configuring
+it. Well... almost.
+
+ctags has a little downside when using Python: it recognizes import lines as a
+definition, at least as of ctags v5.8. No need to explain why it's annoying in
+most cases. After 2 years of suffering, I've found it's possible to overcome
+this simply by adding the --python-kinds=-i option to the command line, or
+better: to ~/.ctags.
+
+And just to make it complete, a quick cookbook style for setting everything up
+and using:
+
+    1. Install ctags
+      e.g. aptitude install exuberant-ctags
+    2. Configure ctags.
+      Add to ~/.ctags the following, one option per line:
+
+        --python-kinds=-i
+        optional: --exclude=<partial names of bad files/directories>. e.g. --exclude=*/build/* to exclude all files inside 'build/' directories
+    3. Add a cron to rebuild tags, for instance:
+      1 * * * * ctags -R -o ~/mytags ~/src
+    4. Configure vim:
+      add to ~/.vimrc: :set tags=~/mytags
+    5. Use Vim:
+        1. vim -t <tag name> to open vim straight on the tag
+        2. Ctrl+] to jump to tag when over a word
+        3. Ctrl+T to pop back
+        4. :tselect or :stselect to open
+        5. :tnext, :tprev to go to next/prev tag finding
+        6. :help tags for more 
+
+This entry was posted in FOSS, Tips & Tricks and tagged ctags, python, vim on
+February 6, 2011 by Oren Held. 
+
+10 thoughts on “Configuring ctags for Python and Vim” (abridged by rrd)
+
+    Sagiv
+    February 8, 2011 at 11:36
+
+    But the _real_ fun begins when you use cscope
+    (http://cscope.sourceforge.net/) (support is by default built-into vim) and
+    pycscope (http://pypi.python.org/pypi/pycscope/0.3) to generate the tags.
+
+    hash1baby
+    April 11, 2011 at 06:24
+
+    thanks for the --python-kinds=-i tip. I've been suffering silently 2 years too.
+
+    Alon Horev
+    July 13, 2011 at 09:09
+
+    You should totally try pyflakes and rope: pyflakes: is like lint,
+    highlights various errors identified in static analysis (syntax errors,
+    undefined symbols). i use it in emacs but hears it works on vim as well.
+    rope: dynamic analysis for python! find-occurences, find-implementation,
+    show-documentation, refactoring methods and much more! this too has a
+    plugin for vim but i've never tried it.
+
+    Quiark
+    May 28, 2013 at 04:35
+
+    I think you don't need to set output file to mytags. Just use the default
+    and then you don't need to set anything in Vim either, it looks for tags
+    automatically. 
+
+----------------- cut here -----------------------------
+
+
+In any directory, run `ctags -R *` to create tags for all the files in that
+folder. It creates a file called 'tags'. You may or may not want to add
+'tags' to your .gitignore file.
+
+If you invoke vi like this:
+
+    vi -t blah doodah.py
+
+... vi will open the file 'doodah.py' and position the cursor at the 
+definition of 'blah'.
+
+Tag commands inside vim:
+
+:/blah     search for tag 'blah' in current file.
+:tag blah  search for tag 'blah' in current file. Um? Same as :/blah ????
+or 
+:ta blah
+:tnext     go to next occurence of tag
+:tprev     go to previous occurrence of tag
+:tlast     go to last occurrence of tag
+:tfirst    go to first occurrence of tag
+:tselect   select  particular tag from the tag list. What???
+:tags      find out information about the current tag.
+Ctl-]      search for the tag under the cursor
+Ctl-T      return to previous location before jump to tag (nested! )
+g]         (hotkey, not :g]) brings up a menu of tags. I don't remember how to
+           use this.

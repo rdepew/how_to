@@ -1,0 +1,35 @@
+SSH and VNC
+===========
+
+ssh
+---
+
+To use SSH on a Linux box, you need to install openssh.
+In order to ssh to the Linux box from another machine, you'll need to:
+    sudo apt install openssh-server
+on the Linux box.
+In order to ssh from the Linux box to another machine, you'll need to:
+    sudo apt install openssh-client
+on the Linux box.
+
+To SSH from one machine to a machine with the IP address 192.168.10.10:
+    ssh 192.168.10.10
+
+If your /etc/hosts file lists a alias for the IP address, you can use the alias
+instead:
+    ssh oem-nuc
+
+vnc
+---
+
+To use VNC on a Linux box, you need to install a VNC server on the remote 
+machine (the machine you want to see) and a VNC viewer or VNC client on
+the local machine (the machine with the keyboard and display).
+
+X11 has a decent VNC server. To install it:
+    sudo apt intall x11vnc
+To start the server on the remote machine:
+    x11vnc -display :0
+
+Then, on the local machine:
+    vncviewer <remote_machine_ip_address>:0

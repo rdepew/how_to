@@ -1,0 +1,73 @@
+# Demonstration
+# How to use ##vso to pass values between steps in a job.
+# According to the documentation, this should also work between jobs.
+# And maybe between stages as well.
+
+trigger:
+- passing-vars
+
+parameters:
+- name: option
+  type: string
+  default: 'try-this'
+  # default: 'azure-suggested'
+  values:
+  - 'none'
+  - 'azure-suggested'
+  - 'manual-batch'
+  - 'jenkins'
+  - 'try-this'
+
+pool:
+  name: 'Default'
+  vmImage: 'AZRPOCDEV1'
+
+jobs:
+- ${{ if eq(parameters.option, 'try-this') }}:
+  - job: try_this
+    steps:
+    - checkout: self
+      clean: false
+    # Remember to use double quotes around the ##vso statement
+    # Do not append a comment to the #vso line
+    # Subsequent steps will also have the pipeline variable added
+    # to their environment.
+    # But you cannot use the variable in the step that it is defined.
+    # See: https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/logging-commands?view=azure-devops&tabs=bash#examples-1
+    - script: |
+        echo Hello there
+        echo "##vso[task.setvariable variable=dummy]pamplemousse
+        echo That is all
+      displayName: assign a value to the variable
+      name: firstXUnitTest
+
+    - script: |
+        echo Dinosaurs ate radioactive iridium meteorites
+        echo The value of dummy is $(dummy) in script
+      displayName: Windows script, variable in pipeline format
+    - script: |
+        echo The value of dummy is %dummy% in Windows script
+      displayName: Windows script, variable in CMD.exe format
+    # bash only works in Linux. Bummer.
+    - bash: | 
+        echo "The value of dummy is $DUMMY in bash"
+      enabled: false
+      displayName: bash script, environment variable
+    - powershell: |
+        Write-Host "And in PowerShell the value of dummy is $env:DUMMY"
+      displayName: PowerShell script, environment variable
+
+    # These ones don't output a var value on my self-hosted Windows agent.
+    - bash: |
+        echo Future jobs can also see $FIRSTXUNITTEST_DUMMY
+        echo Future jobs can also see $(firstXUnitTest.dummy)
+      enabled: false
+      displayName: bash, script-name-and-variable-name format
+    - script: |
+        echo Future jobs can also see $(firstXUnitTest.dummy)
+      displayName: Windows, script-name-dot-variable-name format
+    - powershell: |
+        Write-Host "In powershell, $env:FIRSTXUNITTEST_DUMMY"
+      displayName: PS, script-name-dot-variable-name format
+
+

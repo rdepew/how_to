@@ -126,7 +126,7 @@ also autoloaded when you open a new PowerShell window. However, if you make
 any changes to the file after that, you will need to reload it using the 
 command:
 ```
-Import-Module -Force Mine.html
+Import-Module -Force Mine.psm1
 ```
 
 ### How to see a list of functions

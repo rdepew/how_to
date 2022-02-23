@@ -63,3 +63,4 @@ Voice command accepted. Have a good day, Sir Axelrod.
 
 ```
 rm -rf <env-dir-name>
+```

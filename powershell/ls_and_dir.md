@@ -9,7 +9,7 @@ from, both `ls -l` and `dir`.
 # A hint about `Get-ChildItem`
 
 `Get-ChildItem` lists more than just files and directories. You'll have
-to read about it to understand it fully. For example, `Get-Child Item env:`
+to read about it to understand it fully. For example, `Get-ChildItem env:`
 lists all environment variables.
 
 # Get a directory listing sorted by date

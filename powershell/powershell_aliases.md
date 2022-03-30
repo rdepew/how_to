@@ -73,7 +73,7 @@ Functions act in a manner similar to plain old aliases, but they can be
 more powerful. You can put all of your functions in a file called a 
 _PowerShell script module_.
 
-Script modules go in the `Module` subdirectory of the `WindowsPowerShell` 
+Script modules go in the `Modules` subdirectory of the `WindowsPowerShell` 
 directory, and they use the suffix `.psm1`.
 
 ### How to create a function

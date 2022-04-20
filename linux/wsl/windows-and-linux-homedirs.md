@@ -24,8 +24,16 @@ then when storing your WSL projects:
   or /home/r/blabla
 * Not the Windows file system root directory: /mnt/c/users/r/blabla
   or C:\users\r\blabla
+* On my Windows 10 system running WSL2 it's \\wsl$\Debian\home\r\blabla
 
 If you don't do this, things will run a LOT slower.
+
+Here's an easy way to find out the path: From the Linux command line,
+execute 'cd' to change to your home directory, then execute 'explorer.exe .'
+(the "space dot" is important) to open a File Explorer window. In the 
+Directory field at the top, where it says "> Network > wsl something", 
+click the mouse once, and it will show you the Windows-formatted path to the 
+Linux file system root directory.
 
 ### Running from Windows
 

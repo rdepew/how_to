@@ -123,8 +123,8 @@ def modal_window(root, *args):
 Some things to note:
 1. `Toplevel()` is the widget for a child window. Here, we have 
   identified it as a child of the `root = Tk()` window that we created
-  in `main.py`. Simply put, Toplevel() is the child window's equivalent
-  to Tk(). It doesn't require a `grid()` or `pack()`.
+  in `main.py`. Simply put, `Toplevel()` is the child window's equivalent
+  to `Tk()`. It doesn't require a `grid()` or `pack()`.
 2. The rudimentary "Close" button in the buttonFrame closes the window. We
   will add more buttons and functionality as we go along.
 
@@ -243,7 +243,7 @@ After `dismiss()` is executed, the ModalWindow object still exists, but its
 window is gone. The `result` attribute still exists as well. It doesn't get
 destroyed.
 
-Finally, replace the `self.window.destroy' command in the "Close"
+Finally, replace the `self.window.destroy` command in the "Close"
 button definition with `self.dismiss`, to make sure the window is closed
 properly:
 ```
@@ -321,7 +321,7 @@ class ModalWindow:
         self.window.wait_window()
 
     def set_result(self):
-        self.result = "something"
+        self.result = "something else"
 
     def dismiss(self):
         self.window.grab_release()

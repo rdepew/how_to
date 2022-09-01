@@ -22,7 +22,7 @@ class ModalWindow:
         self.window.wait_window()
 
     def set_result(self):
-        self.result = "something"
+        self.result = "something else"
 
     def dismiss(self):
         self.window.grab_release()

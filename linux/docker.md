@@ -78,10 +78,65 @@ podman push <registry-name>/<REPOSITORY name>:<tag>
 podman push autosoln.jfrog.io/acm-docker-dev-local/cmakebuild:debian-10
 ```
 
-9. To pull the image onto another machine:
+## Loading a Docker image onto another machine.
+
+To pull the image onto another machine:
 ```
 podman pull autosoln.jfrog.io/acm-docker-dev-local/cmakebuild:debian-10
 ```
 
 After `podman pull`, you can use `podman run ...` or `docker run ...` to 
 do something with the container.
+
+## About sudo
+
+Docker containers are configured to always run as root. This means, so the
+experts say, that you don't need `sudo` any more.
+
+The experts are wrong.
+
+You need `sudo`. 
+
+For one thing, you need it to run as a different user, 
+as in `sudo -u the_other_username /bin/do-something` . For another thing
+only `sudo apt-get` can access the /var/lib/dpkg lockfile.
+
+So in the Dockerfile that you use to create the Docker container, include 
+this line:
+```
+RUN apt-get install -y sudo
+```
+
+## Docker containers in Azure Pipelines
+
+You can add a script step that executes the `podman pull` command, but then
+you still have to use `podman exec` to execute stuff inside the container.
+
+Or you can specify the container in the header of your pipeline.  When you 
+do this, then the entire pipeline runs inside the container. Example:
+```
+container: 
+  image: autosoln.jfrog.io/acm-docker-dev-local/cmakebuildv2:debian-10
+  # options: --privileged
+  endpoint: AzureToDockerArtifactory
+```
+
+The endpoint is a service connection that you create in your Azure account.
+
+Or you can specify that specific steps are to run inside containers that you
+have defined in the resources in the header of your pipeline. Like this:
+```
+resources:
+  containers:
+  - container: u14
+    image: ubuntu:14.04
+  - container: u22
+    image: ubuntu:22.04
+
+steps:
+- script: Do this one thing
+  container: u14
+- script: Do this other thing
+  container: u22
+```
+

@@ -1,0 +1,20 @@
+# How to find out who's using a port
+
+There's a bunch of different commands. To really understand them,
+read the manpages.
+
+Make sure you use them with the suggested parameters/options, or
+modify the options to your liking. Using them without any options
+can give you way more output than you wanted.
+
+```
+netstat -ltp
+# To check on a particular port number, like 8080 in this example:
+netstat -ltpn | grep -w ':80'
+
+ss -ta
+# or 
+ss -lta
+
+lsof -i :80
+```

@@ -1,6 +1,6 @@
 # VIM tricks
 
-# Editing multiple files
+## Editing multiple files
 
 1. The simplest way to edit multiple files is with the command 
   `vi file1 file2 ...`
@@ -37,3 +37,51 @@
 
   To exit from all files at once:
   :qa
+
+## Code folding
+
+"Code folding" is when you collapse a block of code into one line.
+It's used in IDEs like Visual Studio and Visual Studio Code, and in
+other editors like Notepad++. It requires the editor to have some
+knowledge of code syntax.
+
+Use "z" commands to manage the code blocks.
+
+NOTE: I've only done this using the Vim extension in VSCode. I don't
+know whether native Vim supports code folding in this way. A web
+search turns up many other ways to skin the code-folding cat.
+
+
+### To collapse a code block
+
+VSCode marks code blocks with a thin vertical line on the left of 
+the code block. To collapse the block,
+position the cursor anywhere in the block and use the command
+`z c`
+Think of the `c` as "collapse" or "close".
+
+### To expand a code block
+
+VSCode marks collapsed code blocks with a greater-than sign ">" 
+on the left, and an ellipsis "..." on the right. To expand the 
+block, position the cursor anywhere on the >line... and use 
+the command
+`z o`
+Think of the `o` as "open". 
+
+In the paradigm of VSCode's Vim plugin, you "close" and "open"
+a code block; hence, `c` and `o`.
+
+### Other commands for working with folds
+
+* `[ z` Jump to the beginning of a fold
+* `] z` Jump to the end of a fold
+* `z m` Increase the fold level by one
+* `z r` Decrease the fold level by one
+* `z O` (that's a capital O) Open all folds at the cursor
+* `z M` (that's a capital M) Close all open folds
+* `z R` (that's a capital R) Decrease the fold level to 
+  zero -- all folds will be open
+
+(see this StackExchange article:
+https://unix.stackexchange.com/questions/141097/how-to-enable-and-use-code-folding-in-vim )

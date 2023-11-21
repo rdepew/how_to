@@ -6,6 +6,8 @@ key, and (2) by copying the public key to the other computer. Best to explain
 by quoting from
 https://docs.aws.amazon.com/greengrass/latest/developerguide/device-tester-for-greengrass-ug.html:
 
+For the truly manual way to do it, see the bottom of this doc.
+
 Adding Authorized SSH Keys to Your Device Under Test
 ----------------------------------------------------
 
@@ -39,3 +41,47 @@ For more information
 
 For more information about ssh-keygen, see this authoritative webpage:
 https://www.ssh.com/ssh/keygen/
+
+The truly manual way to do it
+-----------------------------
+
+Call the machine you're typing on, the client.
+
+Call the machine you want to ssh to, the host.
+
+On the client, type the command
+
+    $ ssh-keygen
+
+... and for now accept all the defaults. If you look in the .ssh
+directory, you will have two keys, a private key, probably called id-rsa,
+and a public key, probably called id-rsa.pub.
+
+Type the command
+
+     $ cat ~/.ssh/id-rsa.pub
+
+to print the contents of the public key to your display.
+
+On the host, you're going to add the public key to the file of authorized
+keys. You will need to use the mouse to copy and paste the contents of 
+the public key. 
+
+On the host, type the command
+
+     $ echo "
+             (now copy and paste the public key)
+                                                " > ~/.ssh/authorized_keys
+
+(The command should look something like this:
+
+     $ echo "ssh-rsa BLAHBLAH yourname@theclient" > ~/.ssh/authorized_keys)
+
+Now go back to the client to test it out. If the IP address of the host
+is 192.168.0.100, and your username on the host is jack,
+then on the client, type the command
+
+     $ssh jack@192.168.0.100
+
+Answer 'yes' if it asks if you really want to make the connection. 
+Press Enter for all other prompts. Then you should be in.
